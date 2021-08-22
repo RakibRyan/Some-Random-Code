@@ -1,3 +1,7 @@
+# X^Y Number plotting.
+# Code written for Mishu.
+# 22/08/2021
+
 import time
 import sys
 
@@ -7,11 +11,13 @@ print("Plot automatically adjusts to fit in console\n")
 base_number = 0
 exponent_number = 0
 
+# Loop
 enter = True
 while enter:
     base_input = input('Base Number: ')
     exponent_input = input('Exponent Number: ')
-
+    
+    # Error handelling
     try:
         base_number = int(base_input)
         exponent_number = float(exponent_input)
@@ -20,9 +26,10 @@ while enter:
         print('What you entered is not a number')
 
 
+# Main function
 def number_to_exponent(number, exponent):
     max_value = pow(number, exponent)
-    line_per_value = 140 / max_value
+    line_per_value = 140 / max_value # Graph adjustment level
     for i in range(number + 1):
         result = pow(i, exponent)
         graph_length = round(line_per_value * result)
@@ -30,7 +37,7 @@ def number_to_exponent(number, exponent):
         for l in loading_animation:
             sys.stdout.write(l)
             sys.stdout.flush()
-            time.sleep(0.1)
+            time.sleep(0.1) # Animation speed
         print('')
         # print(loading_animation)
 
